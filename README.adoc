@@ -1,0 +1,59 @@
+// Asciidoctor Source
+// Nearsoft Ruby Stage 3, Task Interview
+//
+// Original authors:
+// - Gerardo Galíndez
+//
+// Last updated: July 09, 2018 (Mexico City)
+// Notes:
+//   Compile with: $ asciidoctor README.adoc
+
+= Marvel API Wrapper
+[Stage 3: Ruby]
+:toc:
+:showtitle:
+
+TL;DR: Write a wrapper for Marvel API that supports characters and comics.
+
+== Tasks
+
+You're free to write it the way you like it. The only suggestion is to use the
+basic Gem structure (a `lib` directory with an Ruby file, the name of your Gem
+where you can setup your code) and the layout of your choice. Try to keep things
+*SOLID*.
+
+You already start with a valid set of keys and the params needed to connect to
+the API. Feel free to move that code (or replace it entirely) to wherever you
+like.
+
+The acceptance requirements are:
+
+* A wrapper for the https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0[characters endpoint].
+** You need to able to manipulate an object, so you can do things like
+   `character.name` and `character.description`
+** You also need to be able to search a character by name, as a match or as a
+   lookup. Check the `name` and `nameStartsWith` query parameters
+* A wrapper for the https://developer.marvel.com/docs#!/public/getComicsCollection_get_6[comic endpoint].
+** Setup the association from characters to comics, so you can
+   `character.comics` and get a collection of `Comic` objects
+* Write the corresponding tests/specs
+
+You *can*:
+
+- Add any dependencies (except for an already existing wrapper for this API)
+- Use any HTTP ruby client
+- Use any HTTP standalone client such as Postman or cURL
+- Browse through any docs or forums
+- Modify or replace entirely the available code
+
+You *cannot*:
+
+- Use an already existing wrapper for this API
+- Hard code the API's response
+
+== Pitfalls
+
+. This is *Happy-path only*. Just make it work. No need to cover every single
+  corner case.
+. Keep it as simple as possible. If you're writing more than a few lines per
+  method, take a step back and make sure you're not overthinking it.
