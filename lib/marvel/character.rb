@@ -1,16 +1,19 @@
+require_relative 'connector'
+
 module Marvel
   class Character
+
     attr_reader :id
     class << self
+      include Marvel::Connector
       def method_missing(name, *args)
         if name.match /^by_/
-          params = Marvel::Client.auth_params
-          params["#{name[3..-1]}".to_sym] = args
-          res = RestClient.get("#{Marvel::BASE_PATH}characters", {params: params}).body.json
-          # results = res.data.results
-          characters = res.data.results.each do |info|
-            self.new(info)
+          # get('characters', name, args)
+          characters = get('characters', name, args).each do |data|
+            make_character(data)
           end
+
+
           char = if characters.length == 1
             characters.first
           else
@@ -21,8 +24,20 @@ module Marvel
           super
         end
       end
+
+
+      def make_character(data)
+        self.new({
+            id: data.id,
+            name: data.name,
+            description: data.description,
+            modified: data.modified,
+            thumbnail: data.thumbnail
+          })
+      end
     end
-    def initialize(data)
+    def initialize(info)
+
       # ap "Initializing with #{data.name}"
       # # ap data
       # # # @id = data.id
