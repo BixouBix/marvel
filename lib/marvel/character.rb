@@ -13,6 +13,7 @@ module Marvel
             make_character(data)
           end
 
+
           char = if characters.length == 1
             characters.first
           else
@@ -23,6 +24,7 @@ module Marvel
           super
         end
       end
+
 
       def make_character(data)
         self.new({
@@ -35,6 +37,7 @@ module Marvel
       end
     end
     def initialize(info)
+
       # ap "Initializing with #{data.name}"
       # # ap data
       # # # @id = data.id
