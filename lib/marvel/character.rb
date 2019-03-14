@@ -1,4 +1,5 @@
 require_relative 'connector'
+require_relative 'comic'
 
 module Marvel
   class Character
@@ -24,10 +25,8 @@ module Marvel
     end
 
     def comics
-      ap "Searching for comics"
+      @comics || Marvel::Comic.by_characters(id)
     end
   end
 
 end
-# char = Marvel::Character.by_name('thanos')
-# chars = Marvel::Character.by_nameStartsWith('tha')
