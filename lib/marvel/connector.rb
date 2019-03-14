@@ -2,6 +2,7 @@ require_relative 'client'
 
 module Marvel
   module Connector
+
     def get_array(type, name, class_name, *args)
       arr = []
       get(type, name, args).each do |data|

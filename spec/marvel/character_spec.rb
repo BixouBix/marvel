@@ -11,6 +11,7 @@ describe Marvel::Character do
       its(:name) { is_expected.to eq name }
       its(:description) { is_expected.to match /Bitten by a radioactive spider/ }
     end
+
     context 'by name starts with' do
       let(:params) { 'tha' }
 
@@ -31,6 +32,7 @@ describe Marvel::Character do
       subject {described_class.by_events(params)[0]}
 
       its(:id) {is_expected.to be 1010354}
+
     end
   end
 end

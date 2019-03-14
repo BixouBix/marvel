@@ -8,6 +8,7 @@ module Marvel
       include Marvel::Connector
       def method_missing(name, *args)
         if name.match /^by_/
+
           characters = get_array('characters', name, self, args)
           return characters
         else
