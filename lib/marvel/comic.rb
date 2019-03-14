@@ -4,10 +4,10 @@ module Marvel
   class Comic
     attr_reader :id, :title
     class << self
-      include Marvel::Getter
+      include Marvel::Connector
       def method_missing(name, *args)
         if name.match /^by_/
-          comics = get('comics', name, self, args)
+          comics = get_array('comics', name, self, args)
 
           return comics
         else

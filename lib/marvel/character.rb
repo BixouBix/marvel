@@ -1,14 +1,14 @@
-require_relative 'getter'
+require_relative 'connector'
 
 module Marvel
   class Character
     attr_reader :id, :name, :description, :comics
 
     class << self
-      include Marvel::Getter
+      include Marvel::Connector
       def method_missing(name, *args)
         if name.match /^by_/
-          characters = get('characters', name, self, args)
+          characters = get_array('characters', name, self, args)
           return characters
         else
           super
