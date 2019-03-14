@@ -21,7 +21,6 @@ module Marvel
       @name = data.name
       @id = data.id
       @description = data.description
-      @comics_data = data.comics
     end
 
     def comics
