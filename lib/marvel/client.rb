@@ -8,7 +8,7 @@ require 'pry'
 module Marvel
   PUBLIC_KEY = '4df716d6bb9007881f16c148e4e06be8'.freeze
   PRIVATE_KEY = 'd61db5b006beab45ce2f084f9dda9807e2bc311e'.freeze
-  BASE_PATH = 'http://gateway.marvel.com/'
+  BASE_PATH = 'http://gateway.marvel.com/v1/public/'
 
   # Auth config to hit the API with authenticated requests
   class Client
