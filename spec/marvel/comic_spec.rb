@@ -9,6 +9,7 @@ describe Marvel::Comic do
 
       its(:id) { is_expected.to eq id }
       its(:title) {is_expected.to eq 'Avengers Assemble (2012) #3'}
+
       its(:description) {is_expected.to match /The Avengers square off against the Zodiac/}
     end
 
@@ -33,6 +34,7 @@ describe Marvel::Comic do
 
       subject {described_class.by_characters(character)[0]}
       its(:title) {is_expected.to eq "Marvel Age Spider-Man Vol. 2: Everyday Hero (Digest)"}
+
     end
   end
 end

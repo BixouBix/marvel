@@ -1,15 +1,18 @@
 require_relative 'client'
+
 require_relative 'helper'
 
 module Marvel
   module Connector
     include Marvel::Helper
     
+
     def get_array(type, name, class_name, *args)
       arr = []
       get(type, name, args).each do |data|
         arr << class_name.new(data)
       end
+
       array_or_first(arr)
     end
 

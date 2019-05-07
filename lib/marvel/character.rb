@@ -1,6 +1,7 @@
 require_relative 'connector'
 require_relative 'comic'
 
+
 module Marvel
   class Character
     attr_reader :id, :name, :description, :comics
@@ -9,6 +10,7 @@ module Marvel
       include Marvel::Connector
       def method_missing(name, *args)
         if name.match /^by_/
+
           characters = get_array('characters', name, self, args)
           return characters
         else
@@ -21,11 +23,17 @@ module Marvel
       @name = data.name
       @id = data.id
       @description = data.description
+
     end
 
     def comics
       @comics || Marvel::Comic.by_characters(id)
+
     end
   end
 
 end
+
+# char = Marvel::Character.by_name('thanos')
+# chars = Marvel::Character.by_nameStartsWith('tha')
+
